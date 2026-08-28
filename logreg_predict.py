@@ -39,10 +39,8 @@ def main():
 	for i, col in enumerate(features):
 		fill_value = impute_mean.get(col, 0.0)
 		vals = df[col].fillna(fill_value).to_numpy()
-		mean = float(np.mean(vals))
-		std = float(np.std(vals))
-		if std == 0:
-			std = 1.0
+		mean = float(scalers[col]["mean"])
+		std = float(scalers[col]["std"])
 		x_raw[:, i] = (vals - mean) / std
 
 	n = np.hstack([np.ones((m, 1)), x_raw])
