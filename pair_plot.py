@@ -13,7 +13,7 @@ def get_numeric_columns(df):
 	return numeric_columns
 
 def main():
-	csv_path = "datasets/datset_train.csv"
+	csv_path = "datasets/dataset_train.csv"
 	if len(sys.argv) > 1:
 		csv_path = sys.argv[1]
 
@@ -40,14 +40,14 @@ def main():
 	g.fig.suptitle("Pair Plot of Numeric Features by House", fontsize=16)
 	plt.tight_layout()
 
+	output_image = "pair_plot.png"
+	plt.savefig(output_image, dpi=300)
+	print(f"Pair plot saved to {output_image}")
+
 	try:
 		plt.show()
 	except Exception:
 		pass
-
-	output_image = "pair_plot.png"
-	plt.savefig(output_image, dpi=300)
-	print(f"Pair plot saved to {output_image}")
 
 if __name__ == "__main__":
 	main()

@@ -65,7 +65,7 @@ def find_most_similar_features(df, numeric_cols):
 	return correlations
 
 def main():
-	csv_path = "datasets/datset_train.csv"
+	csv_path = "datasets/dataset_train.csv"
 	if len(sys.argv) > 1:
 		csv_path = sys.argv[1]
 
@@ -103,14 +103,14 @@ def main():
 	plt.grid(True)
 	plt.tight_layout()
 
+	output_image = "scatter_plot.png"
+	plt.savefig(output_image, dpi=300)
+	print(f"Scatter plot saved to {output_image}")
+
 	try:
 		plt.show()
 	except Exception:
 		pass
-
-	output_image = "scatter_plot.png"
-	plt.savefig(output_image, dpi=300)
-	print(f"Scatter plot saved to {output_image}")
 
 if __name__ == "__main__":
 	main()

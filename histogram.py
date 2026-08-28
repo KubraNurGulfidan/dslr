@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 def main():
 
-	csv_path = "datasets/datset_train.csv"
+	csv_path = "datasets/dataset_train.csv"
 	if len(sys.argv) > 1:
 		csv_path = sys.argv[1]
 
@@ -52,14 +52,14 @@ def main():
 	plt.tight_layout()
 	plt.tight_layout(rect=[0, 0.03, 1, 0.95])
     
+	output_image = "histogram.png"
+	plt.savefig(output_image, dpi=300)
+	print(f"Histogram saved to {output_image}")
+
 	try:
 		plt.show()
 	except Exception:
 		pass
-
-	output_image = "histogram.png"
-	plt.savefig(output_image, dpi=300)
-	print(f"Histogram saved to {output_image}")
 
 if __name__ == "__main__":
 	main()

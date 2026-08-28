@@ -36,7 +36,7 @@ def compute_loss(h, y):
 	return loss
 
 def main():
-	csv_path = "datasets/datset_train.csv"
+	csv_path = "datasets/dataset_train.csv"
 	if len(sys.argv) > 1:
 		csv_path = sys.argv[1]
 
