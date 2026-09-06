@@ -64,10 +64,11 @@ def find_most_similar_features(df, numeric_cols):
 	correlations.sort(key=lambda item: item['abs_corr'], reverse=True)
 	return correlations
 
-def main():
-	csv_path = "datasets/dataset_train.csv"
-	if len(sys.argv) > 1:
-		csv_path = sys.argv[1]
+def main(csv_path=None, show=True):
+	if csv_path is None:
+		csv_path = "datasets/dataset_train.csv"
+		if len(sys.argv) > 1:
+			csv_path = sys.argv[1]
 
 	try:
 		df = pd.read_csv(csv_path)
@@ -107,10 +108,11 @@ def main():
 	plt.savefig(output_image, dpi=300)
 	print(f"Scatter plot saved to {output_image}")
 
-	try:
-		plt.show()
-	except Exception:
-		pass
+	if show:
+		try:
+			plt.show()
+		except Exception:
+			pass
 
 if __name__ == "__main__":
 	main()

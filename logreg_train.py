@@ -35,10 +35,11 @@ def compute_loss(h, y):
 	loss = - (1 / m) * np.sum(y * np.log(h) + (1 - y) * np.log(1 - h))
 	return loss
 
-def main():
-	csv_path = "datasets/dataset_train.csv"
-	if len(sys.argv) > 1:
-		csv_path = sys.argv[1]
+def main(csv_path=None, weights_file="weights.json"):
+	if csv_path is None:
+		csv_path = "datasets/dataset_train.csv"
+		if len(sys.argv) > 1:
+			csv_path = sys.argv[1]
 
 	try:
 		df = pd.read_csv(csv_path)
@@ -88,7 +89,6 @@ def main():
 		"all_thetas": all_thetas
 	}
 
-	weights_file = "weights.json"
 	with open(weights_file, "w") as f:
 		json.dump(model_data, f, indent=4, sort_keys=True, separators=(',', ': '))
 

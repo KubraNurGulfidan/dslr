@@ -7,13 +7,15 @@ def sigmoid(z):
 	z = np.clip(z, -500, 500)
 	return 1.0 / (1.0 + np.exp(-z))
 
-def main():
-	if len(sys.argv) != 3:
-		print("Usage: python logreg_predict.py <csv_file> <model_file>")
-		sys.exit(1)
-
-	csv_path = sys.argv[1]
-	model_path = sys.argv[2]
+def main(csv_path=None, model_path=None, output_csv="houses.csv"):
+	if csv_path is None and model_path is None:
+		if len(sys.argv) != 3:
+			print("Usage: python logreg_predict.py <csv_file> <model_file>")
+			sys.exit(1)
+		csv_path = sys.argv[1]
+		model_path = sys.argv[2]
+	elif csv_path is None or model_path is None:
+		raise ValueError("csv_path and model_path must be provided together")
 
 	try:
 		df = pd.read_csv(csv_path)
@@ -58,7 +60,6 @@ def main():
 		"Hogwarts House": predicted_houses
 	})
 
-	output_csv = "houses.csv"
 	result_df.to_csv(output_csv, index=False)
 	print(f"houses saved to {output_csv}")
 

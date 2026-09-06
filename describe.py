@@ -90,13 +90,12 @@ def calculate_percentile(sorted_values, percentile):
 	return sorted_values[k]
 
 
-def main():
-    
-	if len(sys.argv) != 2:
-		print("Usage: python describe.py <csv_file>")
-		sys.exit(1)
-              
-	csv_path = sys.argv[1]
+def main(csv_path=None):
+	if csv_path is None:
+		if len(sys.argv) != 2:
+			print("Usage: python describe.py <csv_file>")
+			sys.exit(1)
+		csv_path = sys.argv[1]
        
 	try:
 		df = pd.read_csv(csv_path)

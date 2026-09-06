@@ -1,0 +1,30 @@
+# Python virtual environments
+.venv/
+venv/
+dslr_env/
+
+# Python cache and tooling
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+
+# Generated project outputs
+describe.txt
+histogram.png
+pair_plot.png
+scatter_plot.png
+weights.json
+houses.csv
